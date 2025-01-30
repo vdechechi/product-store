@@ -1,6 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import axios from 'axios';
+import { ProductsService } from '../../shared/services/products.service';
+import { Product } from '../../shared/interfaces/product.interface';
 
 @Component({
   selector: 'app-list',
@@ -10,20 +12,17 @@ import axios from 'axios';
 })
 export class ListComponent implements OnInit {
 
-  products: any[] = []; // Lista de produtos
+  products: Product[] = []; // Lista de produtos
 
   // Injetamos o HttpClient no componente
-  private httpClient = inject(HttpClient);
+  productService = inject(ProductsService);
 
   ngOnInit(){
-    axios.get('/api/products').then((response) => {
-      
-      this.products = response.data;
 
-    }).catch((error) => {
+    this.productService.GetAll().subscribe((products =>{
+      this.products = products
+    }))
 
-      console.log(error);
-    })
-  };
+
+  }
 }
-
