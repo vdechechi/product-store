@@ -43,12 +43,7 @@ export class CreateComponent {
 
       }).subscribe(()=>{
 
-        this.matsnackBar.open("Sucesso ao criar um novo produto!!", "Ok!", {
-          duration: 3000,
-          horizontalPosition: 'right',
-          verticalPosition: 'top',
-          
-        });
+        this.matsnackBar.open("Sucesso ao criar um novo produto!!", "Ok!");
 
         this.routerService.navigateByUrl('/');
 
