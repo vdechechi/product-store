@@ -3,10 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import axios from 'axios';
 import { ProductsService } from '../../shared/services/products.service';
 import { Product } from '../../shared/interfaces/product.interface';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import { CardComponent } from './components/card/card.component';
 
 @Component({
   selector: 'app-list',
   standalone: true,
+  imports: [CardComponent],
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
