@@ -1,8 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field'
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import { ProductsService } from '../../shared/services/products.service';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
+import { Router, RouterLink } from '@angular/router';
 
 
 @Component({
@@ -14,6 +21,12 @@ import {MatButtonModule} from '@angular/material/button';
 })
 export class CreateComponent {
 
+  productsService =  inject(ProductsService)
+
+  matsnackBar = inject(MatSnackBar)
+
+  routerService = inject(Router)
+
   form = new FormGroup({
     title: new FormControl<string>('', {
       nonNullable: true,
@@ -22,6 +35,26 @@ export class CreateComponent {
   });
 
   onSubmit() {
-    console.log(this.form.controls.title.value); // this.form.controls.title.value;
+
+    
+    this.productsService.Post(
+      {
+        title: this.form.controls.title.value
+
+      }).subscribe(()=>{
+
+        this.matsnackBar.open("Sucesso ao criar um novo produto!!", "Ok!", {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          
+        });
+
+        this.routerService.navigateByUrl('/');
+
+
+
+    })
   }
+
  }

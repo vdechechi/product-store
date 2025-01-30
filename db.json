@@ -1,44 +1,28 @@
 {
-    "products": [
-        {
-            "id": 1,
-            "title": "Smartphone X100"
-        },
-        {
-            "id": 2,
-            "title": "Notebook UltraBook Pro"
-        },
-        {
-            "id": 3,
-            "title": "Fone de Ouvido Bluetooth"
-        },
-        {
-            "id": 4,
-            "title": "Monitor Gamer 27''"
-        },
-        {
-            "id": 5,
-            "title": "Teclado Mecânico RGB"
-        },
-        {
-            "id": 6,
-            "title": "Cadeira Ergonômica Office"
-        },
-        {
-            "id": 7,
-            "title": "Smartwatch FitBand 3"
-        },
-        {
-            "id": 8,
-            "title": "Caixa de Som Portátil"
-        },
-        {
-            "id": 9,
-            "title": "Mochila Antifurto para Laptop"
-        },
-        {
-            "id": 10,
-            "title": "Mouse Sem Fio Recargável"
-        }
-    ]
+  "products": [
+    {
+      "id": 1,
+      "title": "Product 1"
+    },
+    {
+      "id": 2,
+      "title": "Product 2"
+    },
+    {
+      "id": 3,
+      "title": "Product 3"
+    },
+    {
+      "id": "3747",
+      "title": "Teclado"
+    },
+    {
+      "id": "bcc3",
+      "title": "Mouse"
+    },
+    {
+      "id": "212c",
+      "title": "Stanley"
+    }
+  ]
 }

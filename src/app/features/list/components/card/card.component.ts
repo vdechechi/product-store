@@ -17,4 +17,6 @@ export class CardComponent {
 
   productTitle = computed(() => this.product().title);
 
+  productId = computed(() => this.product().id);
+
 }
