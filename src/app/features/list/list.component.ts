@@ -7,18 +7,28 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { CardComponent } from './components/card/card.component';
 import { Router, RouterLink } from '@angular/router';
+import {
+  MatDialog,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogRef,
+  MatDialogTitle,
+} from '@angular/material/dialog';
 
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CardComponent, RouterLink, MatButtonModule],
+  imports: [CardComponent, RouterLink, MatButtonModule,],
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
 
-  products: Product[] = []; // Lista de produtos
+  readonly dialog = inject(MatDialog);
+
+  products: Product[] = [];
 
   // Injetamos o HttpClient no componente
   productService = inject(ProductsService);
@@ -32,6 +42,7 @@ export class ListComponent implements OnInit {
     }))
 
   }
+  
 
   onEdit(product: Product){
 
@@ -39,13 +50,5 @@ export class ListComponent implements OnInit {
 
   }
 
-  onDelete(productId: string) {
-    if (confirm('Are you sure you want to delete this product?')) {
-      this.productService.Delete(productId).subscribe(() => {
-        console.log('Product deleted successfully:', productId);
-        // Update the products list to remove the deleted product
-        this.products = this.products.filter(product => product.id !== productId);
-      });
-    }
-  }
+ 
 }
