@@ -6,7 +6,7 @@ import { Product } from '../../shared/interfaces/product.interface';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { CardComponent } from './components/card/card.component';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 
 @Component({
@@ -23,12 +23,19 @@ export class ListComponent implements OnInit {
   // Injetamos o HttpClient no componente
   productService = inject(ProductsService);
 
+  router = inject(Router)
+
   ngOnInit(){
 
     this.productService.GetAll().subscribe((products =>{
       this.products = products
     }))
 
+  }
+
+  onEdit(product: Product){
+
+    this.router.navigateByUrl("/edit/" + product.id)
 
   }
 }

@@ -4,12 +4,13 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
-import { Router, RouterLink, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/router';
 import { ProductsService } from '../../shared/services/products.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { Product } from '../../shared/interfaces/product.interface';
 
 
 
@@ -22,14 +23,16 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class EditComponent {
 
+  product : Product = inject(ActivatedRoute).snapshot.data['product'];
+
   productsService =  inject(ProductsService)
 
   matsnackBar = inject(MatSnackBar)
 
-  routerService = inject(Router)
+  router = inject(Router)
 
   form = new FormGroup({
-    title: new FormControl<string>('', {
+    title: new FormControl<string>(this.product.title, {
       nonNullable: true,
       validators: Validators.required
     }),
@@ -37,17 +40,15 @@ export class EditComponent {
 
   onSubmit() {
 
-
-    
-    this.productsService.Post(
-      {
+    this.productsService
+    .Put(this.product.id, {
         title: this.form.controls.title.value
 
       }).subscribe(()=>{
 
         this.matsnackBar.open("Sucesso ao criar um novo produto!!", "Ok!");
 
-        this.routerService.navigateByUrl('/');
+        this.router.navigateByUrl('/');
 
 
 
