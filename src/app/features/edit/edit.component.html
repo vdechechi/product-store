@@ -2,10 +2,12 @@
 <div class="action-container">
     <button mat-flat-button color="primary" [routerLink]="['/']" >Voltar</button>
 </div>
+
 <form action="" [formGroup]="form" (ngSubmit)=" onSubmit()" class="form-container">
 
+    
     <div class="form-content-container">
-        <span class="titulo" mat-card-title>Adicionar novo Produto</span>
+        <span class="titulo" mat-card-title>Edição de Produto</span>
      <mat-form-field>
          <mat-label>Titulo</mat-label>
          <input matInput type="text" formControlName="title" placeholder="Titulo" />
@@ -13,4 +15,4 @@
  
      <button mat-flat-button color="accent" type="submit">Salvar</button>
     </div>
- </form>    
+ </form>

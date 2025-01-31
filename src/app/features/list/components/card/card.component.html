@@ -3,7 +3,8 @@
     <mat-card-title> {{productTitle()}}</mat-card-title>
   </mat-card-header>
   <mat-card-actions>
-    <button mat-button class="editar">Editar</button>
+    <button mat-button class="editar" [routerLink]="['/edit']">Editar</button>
     <button mat-button excluir>Excluir</button>
    </mat-card-actions>
 </mat-card>
+
