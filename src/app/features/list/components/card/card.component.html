@@ -4,7 +4,7 @@
   </mat-card-header>
   <mat-card-actions>
     <button mat-button class="editar" (click)="edit.emit()">Editar</button>
-    <button mat-button excluir>Excluir</button>
+    <button mat-button excluir (click)="delete.emit()">Excluir</button>
    </mat-card-actions>
 </mat-card>
 

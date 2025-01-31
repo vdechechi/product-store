@@ -38,4 +38,14 @@ export class ListComponent implements OnInit {
     this.router.navigateByUrl("/edit/" + product.id)
 
   }
+
+  onDelete(productId: string) {
+    if (confirm('Are you sure you want to delete this product?')) {
+      this.productService.Delete(productId).subscribe(() => {
+        console.log('Product deleted successfully:', productId);
+        // Update the products list to remove the deleted product
+        this.products = this.products.filter(product => product.id !== productId);
+      });
+    }
+  }
 }
